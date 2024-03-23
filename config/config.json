@@ -8,18 +8,18 @@
     "port" :  3306
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "username": "uottkgtbwyvnll2w",
+    "password": "eNo0zGJmXW9YgQBsV2ly",
+    "database": "built3r9iljvig8mby3d",
+    "host": "built3r9iljvig8mby3d-mysql.services.clever-cloud.com",
     "dialect": "mysql",
     "port" :  3306
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "uottkgtbwyvnll2w",
+    "password": "eNo0zGJmXW9YgQBsV2ly",
+    "database": "built3r9iljvig8mby3d",
+    "host": "built3r9iljvig8mby3d-mysql.services.clever-cloud.com",
     "dialect": "mysql",
     "port" :  3306
   }
