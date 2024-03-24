@@ -18,12 +18,19 @@ exports.getAllDetails = async (req, res) => {
 }
 
 exports.carSigma = async (req, res) => {
-    const details = await Details.findAll({ 
-        include: [
-            { model : Car, attributes: ["carID", "name", "price"]},
-            { model : Booking, attributes: ["booking_date"]}
+    const details = await Car.findAll({
+        attributes: ["carID", "name", "price"],
+        include : [
+            { model : Booking, attributes: ["booking_date"] }
         ]
     })
+
+    // const details = await Details.findAll({ 
+    //     include: [
+    //         { model : Car, attributes: ["carID", "name", "price"]},
+    //         { model : Booking, attributes: ["booking_date"]}
+    //     ]
+    // })
     return res.json({
         status : "true",
         data : details,
@@ -39,6 +46,7 @@ exports.carDetails = async (req, res) => {
         const { carID } = req.body;
         const detailsData = await Details.findAll({
             where : {carID : carID},
+            include : [{model : Car, attributes: ["name", "capacity", "am"]}],
             attributes: [
                 'carID',
                 [sequelize.fn('COUNT', sequelize.col('carID')), 'count'],
