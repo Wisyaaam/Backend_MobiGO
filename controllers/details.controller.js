@@ -19,18 +19,8 @@ exports.getAllDetails = async (req, res) => {
 
 exports.carSigma = async (req, res) => {
     const details = await Car.findAll({
-        attributes: ["carID", "name", "price"],
-        include : [
-            { model : Booking, attributes: ["booking_date"] }
-        ]
+        attributes: ["carID", "name", "price", "model"]
     })
-
-    // const details = await Details.findAll({ 
-    //     include: [
-    //         { model : Car, attributes: ["carID", "name", "price"]},
-    //         { model : Booking, attributes: ["booking_date"]}
-    //     ]
-    // })
     return res.json({
         status : "true",
         data : details,
@@ -48,11 +38,11 @@ exports.carDetails = async (req, res) => {
             where : {carID : carID},
             include : [{model : Car, attributes: ["name", "capacity", "am"]}],
             attributes: [
-                'carID',
-                [sequelize.fn('COUNT', sequelize.col('carID')), 'count'],
-                [sequelize.fn('SUM', sequelize.col('total')), 'total']
+                [sequelize.col('Details.carID'), 'carID'], // Menentukan sumber kolom carID secara eksplisit
+                [sequelize.fn('COUNT', sequelize.col('Details.carID')), 'count'],
+                [sequelize.fn('SUM', sequelize.col('Details.total')), 'total']
             ],
-            group: ['carID']
+            group: ['Details.carID'] // Mengelompokkan berdasarkan kolom carID dari tabel Details
         });
 
         res.status(200).json({
