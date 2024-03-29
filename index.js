@@ -8,11 +8,10 @@ const detailRoute= require('./routes/detail.route')
 
 const PORT = 8000
 const app  = express()
-app.use(cors())
 
 app.use(cors({
-    origin: 'http://localhost:3000/'
-}))
+    origin: 'http://localhost:3000'
+}));
 
 app.use('/user', userRoute)
 app.use('/car', carRoute)
