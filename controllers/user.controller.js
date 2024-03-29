@@ -12,6 +12,16 @@ exports.getAllUser = async (req, res) => {
   });
 };
 
+exports.getByLogin = async (req, res) => {
+  let userID = req.user.userID
+  let users = await User.findAll({where: {userID : userID}});
+  return res.json({
+    success: true,
+    data: users,
+    message: "Data have been loaded",
+  });
+};
+
 exports.findUser = async (req, res) => {
   let keyword = req.params.key;
 
