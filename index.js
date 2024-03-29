@@ -10,22 +10,16 @@ const PORT = 8000
 const app  = express()
 app.use(cors())
 
+app.use(cors({
+    origin: 'http://localhost:3000/'
+}))
+
 app.use('/user', userRoute)
 app.use('/car', carRoute)
 app.use('/booking', bookingRoute)
 app.use('/auth', authRoute)
 app.use('/detail', detailRoute)
-
-
-// check role   
-const authControll = require('./controllers/auth.controller')
-app.get('/checkadmin', authControll.authorize, (req, res) => {
-    const role = req.user.role
-
-    return res.json({
-        message : `Your role is ${role}`
-    })
-})
+app.use(express.static(__dirname))
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
