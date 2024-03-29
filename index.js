@@ -16,7 +16,9 @@ app.use(cors({
 app.use('/user', userRoute)
 app.use('/car', carRoute)
 app.use('/booking', bookingRoute)
-app.use('/auth', authRoute)
+app.use('/auth', authRoute, (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+})
 app.use('/detail', detailRoute)
 app.use(express.static(__dirname))
 
