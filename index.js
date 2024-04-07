@@ -20,7 +20,7 @@ app.use('/auth', authRoute, (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 })
 app.use('/detail', detailRoute)
-app.use(express.static(__dirname))
+app.use(express.static(path.join(__dirname, 'image')));
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
