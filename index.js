@@ -5,6 +5,7 @@ const carRoute = require('./routes/car.route')
 const bookingRoute = require('./routes/booking.route')
 const authRoute = require('./routes/auth.route')
 const detailRoute= require('./routes/detail.route')
+const path = require('path');
 
 const PORT = 8000
 const app  = express()
