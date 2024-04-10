@@ -12,7 +12,8 @@ app.get('/bylogin', authControll.authorize, roleValidate.isUser, userController.
 app.get('/:key', authControll.authorize, roleValidate.isAdmin, userController.findUser) // FIND USER WITH KEY
 app.post('/', authControll.authorize, roleValidate.isAdmin, userController.addUser) // ADD USER
 app.post('/signup', validateUser, userController.registration) // ADD USER
-app.put('/edit/:id', authControll.authorize, userController.updateUser) // UPDATE USER
+app.put('/edit/:id', authControll.authorize, isAdmin,userController.updateUser) // UPDATE USER
+app.put('/edituser/', authControll.authorize, isUser, userController.updateUsers) // UPDATE USER
 app.put('/reset/:id', authControll.authorize, roleValidate.isAdmin, userController.resetPass) // RESET PASS
 app.put('/password/:id', authControll.authorize, roleValidate.isUser, userController.updatePass) // UPDATE PASS
 app.delete('/:id', authControll.authorize, roleValidate.isAdmin, userController.deleteUser) // DELETE USER

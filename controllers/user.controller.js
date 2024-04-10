@@ -115,6 +115,28 @@ exports.updateUser = (req, res) => {
       });
     });
 };
+exports.updateUsers = (req, res) => {
+  let userData = {
+    username: req.body.username,
+    email: req.body.email,
+    number: req.body.number
+  };
+
+  User.update(userData, { where: { userID: req.user.userID } })
+    .then((result) => {
+      return res.json({
+        status: true,
+        data: result,
+        message: "Data has been update",
+      });
+    })
+    .catch((err) => {
+      return res.json({
+        status: false,
+        message: err,
+      });
+    });
+};
 
 exports.deleteUser = (request, response) => {
   let userID = request.params.id;
