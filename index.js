@@ -11,14 +11,14 @@ const PORT = 8000
 const app  = express()
 
 app.use(cors({
-    origin: ['https://mobigos.vercel.app/', 'http://localhost:3000']
+    origin: ['https://mobigos.vercel.app']
 }));
 
 app.use('/user', userRoute)
 app.use('/car', carRoute)
 app.use('/booking', bookingRoute)
 app.use('/auth', authRoute, (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', 'https://mobigos.vercel.app');
 })
 app.use('/detail', detailRoute)
 app.use(express.static(path.join(__dirname, 'image')));
