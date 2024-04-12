@@ -11,7 +11,7 @@ const PORT = 8000
 const app  = express()
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: ['https://mobigos.vercel.app/', 'http://localhost:3000']
 }));
 
 app.use('/user', userRoute)
