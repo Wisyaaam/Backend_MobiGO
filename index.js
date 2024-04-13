@@ -18,7 +18,7 @@ app.use('/user', userRoute)
 app.use('/car', carRoute)
 app.use('/booking', bookingRoute)
 app.use('/auth', authRoute, (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', ['https://mobigos.vercel.app', 'http://localhost:3000']);
+    res.setHeader('Access-Control-Allow-Origin', 'https://mobigos.vercel.app, http://localhost:3000');
 })
 app.use('/detail', detailRoute)
 app.use(express.static(path.join(__dirname, 'image')));
