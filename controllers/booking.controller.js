@@ -233,7 +233,7 @@ exports.historyUserNo = async (req, res) => {
       include: [
         {
           model: Details,
-          attributes: ["detailsID", "bookingID", "carID"],
+          attributes: ["detailsID", "bookingID", "carID", "total"],
           include: [
             { model : Car, attributes: ["name", "price", "capacity", "color", "am", "model"] }
           ]
