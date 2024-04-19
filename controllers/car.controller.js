@@ -19,9 +19,7 @@ exports.findCar = async (req, res) => {
     where: {
       [Op.or]: [
         { name: { [Op.substring]: keyword } },
-        { capacity: { [Op.substring]: keyword } },
-        { model: { [Op.substring]: keyword } },
-        { color: { [Op.substring]: keyword } },
+        { carID: { [Op.substring]: keyword } }
       ],
     },
   });
