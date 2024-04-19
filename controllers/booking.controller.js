@@ -198,12 +198,13 @@ exports.cektanggal = async (req, res) => {
 exports.historyUser = async (req, res) => {
   try{
     const BookingData = await Booking.findAll({
+      attrributes: ["booking_date", "end_date","booking"],
       include: [
         {
           model: Details,
-          attributes: ["detailsID", "bookingID", "carID"],
+          attributes: ["detailsID", "bookingID", "carID", "total"],
           include: [
-            { model : Car, attributes: ["name", "price", "capacity", "color", "am", "model"] }
+            { model : Car, attributes: ["name", "price", "color", "am", "model"] }
           ]
         }
       ],
