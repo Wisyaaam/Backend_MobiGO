@@ -8,7 +8,7 @@ const app = express()
 app.use(express.json())
 
 app.get('/', authControll.authorize, roleValidate.isAdmin, userController.getAllUser) // GET ALL USER
-app.get('/bylogin', authControll.authorize, roleValidate.isUser, userController.getByLogin) // GET ALL USER
+app.get('/bylogin', authControll.authorize, userController.getByLogin) // GET ALL USER
 app.get('/:key', authControll.authorize, roleValidate.isAdmin, userController.findUser) // FIND USER WITH KEY
 app.post('/', authControll.authorize, roleValidate.isAdmin, userController.addUser) // ADD USER
 app.post('/signup', validateUser, userController.registration) // ADD USER
