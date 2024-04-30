@@ -270,7 +270,7 @@ exports.historyAdmin = async (req, res) => {
           ]
         }
       ],
-      where : { booking_status : [0 , 1] }
+      where : { booking_status : [Op.or]: [0, 1] }
     })
 
 
