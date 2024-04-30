@@ -271,7 +271,7 @@ exports.historyAdmin = async (req, res) => {
         }
       ],
       where : { booking_status: {
-          [Op.or]: [0, 1] // Memilih data dengan booking_status 0 atau 1
+          [Op.or]: ["0", "1"] // Memilih data dengan booking_status 0 atau 1
         }}
     })
 
