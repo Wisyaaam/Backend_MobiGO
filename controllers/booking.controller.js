@@ -259,14 +259,12 @@ exports.historyUserNo = async (req, res) => {
 exports.historyAdmin = async (req, res) => {
   try{
     const BookingData = await Booking.findAll({
-      attributes: ["booking_date", "return_date", "total"],
       include: [
-        { model: User, attributes: ["username"] },
+        { model: User},
         {
           model: Details,
-          attributes: ["booking_id"],
           include: [
-            { model : Car, attributes: ["name"] }
+            { model : Car }
           ]
         }
       ],
