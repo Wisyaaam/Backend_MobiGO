@@ -269,7 +269,8 @@ exports.historyAdmin = async (req, res) => {
             { model : Car, attributes: ["name"] }
           ]
         }
-      ]
+      ],
+      where : { booking_status : [0 , 1] }
     })
 
 
