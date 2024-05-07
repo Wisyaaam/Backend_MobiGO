@@ -233,12 +233,9 @@ exports.historyUser = async (req, res) => {
       ],
       where: { 
         userID: req.user.userID, 
-        [Op.and]: [
-          {
-            booking_status: {
-              [Op.not]: 2 // Menggunakan operator NOT
-            }
-          }
+        [Op.or]: [
+          { booking_status: { [Op.not]: 2 } }, // booking_status tidak sama dengan 2
+          { booking_status: null } // booking_status adalah null (jika diperlukan)
         ]
       }
     });
