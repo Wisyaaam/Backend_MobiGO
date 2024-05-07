@@ -234,7 +234,7 @@ exports.historyUser = async (req, res) => {
       where: { 
         userID: req.user.userID, 
         booking_status: {
-          [sequelize.Op.not]: 2 
+          [Op.not]: 2 
         } 
       }
     });
