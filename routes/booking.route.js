@@ -9,6 +9,7 @@ app.get('/', authControll.authorize, roleValidate.isAdmin, bookController.getAll
 // app.post('/cektanggal', bookController.cektanggal)
 app.post('/', authControll.authorize, roleValidate.isUser, bookController.addBooking)
 app.put('/verify', authControll.authorize, roleValidate.isAdmin, bookController.verifyPemesanan)
+app.put('/cancel', authControll.authorize, roleValidate.isAdmin, bookController.cancelPemesanan)
 app.put('/', authControll.authorize, roleValidate.isAdmin, bookController.pengembalianMobil)
 
 // history active

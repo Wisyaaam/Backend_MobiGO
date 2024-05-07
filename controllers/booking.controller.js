@@ -165,6 +165,29 @@ exports.verifyPemesanan = async (req, res) => {
     });
   }
 };
+exports.cancelPemesanan = async (req, res) => {
+  const { bookingID } = req.body;
+
+  try {
+    await Booking.update(
+      {
+        booking_status: 10,
+      },
+      {
+        where: { bookingID },
+      }
+    );
+
+    res.status(200).json({
+      message: "Cancel successfully",
+    });
+  } catch (err) {
+    return res.json({
+      success: false,
+      message: err.message,
+    });
+  }
+};
 
 exports.cektanggal = async (req, res) => {
   const { car_id, date } = req.body;
