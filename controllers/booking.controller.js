@@ -233,11 +233,16 @@ exports.historyUser = async (req, res) => {
       ],
       where: { 
         userID: req.user.userID, 
-        [Op.not]: [
-      { booking_status : 2 }
-    ],
+        [Op.and]: [
+          {
+            booking_status: {
+              [Op.not]: 2 // Menggunakan operator NOT
+            }
+          }
+        ]
       }
     });
+
 
 
     res.json({
