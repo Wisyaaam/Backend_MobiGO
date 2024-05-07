@@ -13,5 +13,5 @@ app.get('/car', authControll.authorize, roleValidate.isAdmin, detailControleer.c
 
 // detail clicked 
 app.post('/details', authControll.authorize, roleValidate.isAdmin, detailControleer.carDetails)
-app.delete('/delete', authControll.authorize, roleValidate.isAdmin, detailControleer.deleteBook)
+app.delete('/:id', authControll.authorize, roleValidate.isAdmin, detailControleer.deleteBook)
 module.exports = app
