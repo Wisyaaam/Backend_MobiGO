@@ -233,9 +233,9 @@ exports.historyUser = async (req, res) => {
       ],
       where: { 
         userID: req.user.userID, 
-        booking_status: {
-          [Op.not]: 2 
-        } 
+        [Op.not]: [
+      { booking_status : 2 }
+    ],
       }
     });
 
