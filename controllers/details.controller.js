@@ -57,3 +57,24 @@ exports.carDetails = async (req, res) => {
         });
     }
 };
+
+
+exports.deleteBook = async (request, response) => {
+    let userID = request.params.id;
+    const details =   await Details.findOne({ where: { detailsID : userID } })
+
+    Details.destroy({ where: { detailsID : userID } })
+      .then((result) => {
+        Booking.destroy({ where: {bookingID : details.BookingID}})
+        return response.json({
+          success: true,
+          message: `Data Booking has been deleted`,
+        });
+      })
+      .catch((error) => {
+        return response.json({
+          success: false,
+          message: error.message,
+        });
+      });
+  };
