@@ -219,38 +219,36 @@ exports.cektanggal = async (req, res) => {
 /// HISTORY USER
 
 exports.historyUser = async (req, res) => {
-  try {
+  try{
     const BookingData = await Booking.findAll({
-      attributes: ["booking_date", "end_date", "booking"],
+      attrributes: ["booking_date", "end_date","booking"],
       include: [
         {
           model: Details,
           attributes: ["detailsID", "bookingID", "carID", "total"],
           include: [
-            { model: Car, attributes: ["name", "price", "color", "am", "model"] }
+            { model : Car, attributes: ["name", "price", "color", "am", "model"] }
           ]
         }
       ],
-      where: { 
-        userID: req.user.userID, 
-        booking_status: {
-          [Op.not]: 2 
-        } 
+      where : { userID : req.user.userID, booking_status : {
+        [Op.not] : 2
       }
-    });
+    })
+
 
     res.json({
-      status: "success",
-      data: BookingData,
-      message: "Data has successfully loaded"
-    });
+      status : "success",
+      data : BookingData,
+      message : "Data has successfully loaded"
+    })
   } catch (err) {
     res.json({
-      status: "false",
-      message: err.message
-    });
+      status : "false",
+      message : err.message
+    })
   }
-};
+}
 
 
 // history user non active
